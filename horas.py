@@ -7,12 +7,13 @@ class Horas(object):
 
     def __init__(self, ruta_hs='~/.horas.json'):
         self.ruta_hs = os.path.expanduser(ruta_hs)
+        self.formato_datetime = '%Y-%m-%d %H:%M:%S'
 
     def inicio(self, nombre='horas-sueltas'):
         hs = self._leer_hs()
         self._cerrar_registros(hs)
         hs.setdefault(nombre, []).append({
-            'inicio': self._hora()
+            'inicio': datetime.utcnow().strftime(self.formato_datetime)
         })
         self._salvar_hs(hs)
 
@@ -29,11 +30,9 @@ class Horas(object):
             f.write(json.dumps(hs, indent=4))
             f.write('\n')
 
-    def _hora(self):
-        return datetime.utcnow().isoformat()
-
     def _cerrar_registros(self, hs):
         for _, archivo in hs.items():
             for registro in archivo:
                 if 'fin' not in registro:
-                    registro['fin'] = self._hora()
+                    registro['fin'] = datetime.utcnow() \
+                                              .strftime(self.formato_datetime)
