@@ -9,9 +9,10 @@ class Horas(object):
         self.ruta_hs = os.path.expanduser(ruta_hs)
         self.formato_datetime = '%Y-%m-%d %H:%M:%S'
 
-    def inicio(self, nombre='horas-sueltas'):
+    def inicio(self, nombre):
         hs = self._leer_hs()
         self._cerrar_registros(hs)
+        nombre = nombre or 'horas-sueltas'
         hs.setdefault(nombre, []).append({
             'inicio': datetime.utcnow().strftime(self.formato_datetime)
         })
