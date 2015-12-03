@@ -31,8 +31,8 @@ class Horas(object):
             f.write('\n')
 
     def _cerrar_registros(self, hs):
-        for _, archivo in hs.items():
-            for registro in archivo:
+        for tarea in hs.values():
+            for registro in tarea:
                 if 'fin' not in registro:
                     registro['fin'] = datetime.utcnow() \
                                               .strftime(self.formato_datetime)
