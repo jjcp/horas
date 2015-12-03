@@ -8,6 +8,12 @@ class Horas(object):
 
     def __init__(self, ruta_hs='~/.horas.json'):
         self.ruta_hs = os.path.expanduser(ruta_hs)
+
+        if (not os.path.isfile(self.ruta_hs)
+            or os.stat(self.ruta_hs).st_size == 0):
+            with open(self.ruta_hs, 'w+') as f:
+                f.write('{}\n')
+
         self.formato_datetime = '%Y-%m-%d %H:%M:%S'
         self.formato_fecha = '%Y-%m-%d'
 
