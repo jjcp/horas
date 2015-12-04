@@ -14,8 +14,8 @@ class Horas(object):
             with open(self.ruta_hs, 'w+') as f:
                 f.write('{}\n')
 
-        self.formato_datetime = '%Y-%m-%d %H:%M:%S'
-        self.formato_fecha = '%Y-%m-%d'
+        self.formato_datetime = '%d-%m-%Y %H:%M:%S'
+        self.formato_fecha = '%d-%m-%Y'
 
     def inicio(self, nombre):
         hs = self._leer_hs()
