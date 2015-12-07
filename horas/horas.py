@@ -48,7 +48,7 @@ class Horas(object):
                     fin = datetime.strptime(registro['fin'],
                                             self.formato_datetime)
                     delta = reporte[fecha].setdefault(nombre, timedelta())
-                    reporte[fecha][nombre] += delta + (fin - inicio)
+                    reporte[fecha][nombre] += (fin - inicio)
                 else:
                     tarea_activa.setdefault(fecha, {})
                     fin = datetime.utcnow().replace(microsecond=0)
