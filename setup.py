@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='horas',
-    version='0.0.1a3',
+    version='0.0.1a4',
     description='Registro de horas',
     license='GPLv2',
     author='Juan Cabrera',
